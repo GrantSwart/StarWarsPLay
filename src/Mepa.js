@@ -44,28 +44,40 @@ class Mepa extends Component {
         //this.setState({ allAEPA: data });
       });
     console.log("Component mounted");
-    console.log(this.state.books);
-
-    // this.displayData();
+    //console.log(this.state.books.map((p) => { return console.log(p.name)});
   }
 
   // displayData() {
   //  console.log("p " + this.state.peopledata);
   // }
+  //map function returns an array of components (Joke in this case)
 
   render() {
+    //create array of Person components
+    const PersonComponents = this.state.books.map((joke, i) => (
+      <Person key={joke.name} name={joke.name} />
+    ));
     //this approach pass in the books array to the Character component
-
+    //use map function to return array of components
     return (
       <div>
         <h2>Mepa component</h2>
         <h1>Approach 1 - use map in parent component</h1>
         {this.state.books.map((project, i) => {
-          return <Person name={project.name} />;
+          return (
+            <Person
+              key={project.name}
+              name={project.name}
+              gender={project.gender}
+              homeworld={project.homeworld}
+            />
+          );
         })}
 
         <h1>Approach 2 - pass array into child component</h1>
         <Character people={this.state.books} />
+        <h1>Approach 3 - map function outside of render</h1>
+        <div>{PersonComponents}</div>
       </div>
     );
   }

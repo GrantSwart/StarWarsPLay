@@ -7,9 +7,9 @@ const Character = ({ people }) => {
         <h1>Star Wars List</h1>
       </center>
       {people.map((contact) => (
-        <div class="card">
-          <div class="card-body">
-            <h3 class="card-title">Name: {contact.name}</h3>
+        <div>
+          <div>
+            <h3>Name: {contact.name}</h3>
           </div>
         </div>
       ))}
